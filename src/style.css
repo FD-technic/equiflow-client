@@ -1,0 +1,70 @@
+.header,
+.footer {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--border-color);
+}
+
+.header {
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em;
+}
+
+.header h1 {
+    color: var(--color-secondary);
+}
+
+.header h1 span {
+    font-weight: 400;
+    color: var(--color-primary);
+}
+
+.header nav {
+    margin: 0;
+}
+
+.header ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 1em;
+}
+
+.header nav ul li {
+    color: var(--text-light);
+}
+
+.header nav ul li a {
+    padding: .25em 1em;
+    border-radius: .5em;
+    background-color: var(--color-primary);
+    color: var(--text-dark);
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.header nav ul li a:hover {
+    padding: .25em 1em;
+    background-color: var(--color-primary-hover);
+    color: var(--text-dark);
+}
+
+.footer {
+    justify-content: center;
+    color: var(--text-dark);
+    padding: 1em 0;
+}
+
+.chart-container {
+    width: 100%;
+    height: 400px;
+}
+
+.chart {
+    background-color: var(--surface-color);
+    color: var(--text-dark);
+    margin: 2em;
+    padding: 1em;
+    font-weight: 800;
+}
