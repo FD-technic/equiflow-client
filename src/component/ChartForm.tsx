@@ -1,14 +1,27 @@
-const ChartForm = () => {
+import Select from "./Select";
 
-    return (
-<>
-<form className="section">
-    <label>Ticker:</label>
-    <input></input>
+type Props = {
+  id: string;
+  label: string;
+  values: string[];
+  value: string;
+  onChange: (ticker: string) => void;
+};
 
-</form>
-</>
-    );
+const ChartForm = ({ id, label, value, values, onChange }: Props) => {
+  return (
+    <>
+      <form className="section">
+        <Select
+          id={id}
+          label={label}
+          values={values}
+          value={value}
+          onChange={onChange}
+        />
+      </form>
+    </>
+  );
 };
 
 export default ChartForm;

@@ -13,17 +13,18 @@ import {
 } from "recharts";
 
 type Props = {
-    data: StockPoint[];
-}
+  label: string;
+  data: StockPoint[];
+};
 
-const ChartLine = ({ data }: Props) => {
+const ChartLine = ({ label, data }: Props) => {
   console.log("data grafu: ", data);
 
   return (
     <>
       <div className="section chart">
         <div className="chart-container">
-          <h3>graf...</h3>
+          <h3>{label}</h3>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={data}>
               <CartesianGrid strokeDasharray="3 3" />
