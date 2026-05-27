@@ -1,26 +1,54 @@
+import "../App.css";
+
 import { useEffect, useState } from "react";
-import ChartForm from "./ChartForm";
 import ChartCard from "./ChartCard";
 import { getApi } from "../api/getApi";
 import type { StockData } from "../types/stock";
-
-const tickers = ["QQQ", "AAPL", "SPY", "NVDA", "MSFT", "TSLA"];
+import { DEFAULT_TICKERS, type Ticker } from "../data/tickers";
+import Trend from "./Trend";
+import ChartForm from "./ChartForm";
 
 const StockDashboard = () => {
-  const [ticker, setTicker] = useState("QQQ");
   const [data, setData] = useState<StockData>();
   const [loading, setLoading] = useState(true);
+  const [tickers, setTickers] = useState<Ticker[]>(() => {
+    const saved = localStorage.getItem("tickers");
+
+    if (saved) {
+      return JSON.parse(saved) as Ticker[];
+    }
+
+    return DEFAULT_TICKERS;
+  });
+
+  const [ticker, setTicker] = useState<Ticker>(() => {
+    const savedTicker = localStorage.getItem("lastTicker");
+
+    if (savedTicker) {
+      return savedTicker;
+    }
+
+    return tickers[0];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("tickers", JSON.stringify(tickers));
+  }, [tickers]);
+
+  useEffect(() => {
+    localStorage.setItem("lastTicker", ticker);
+  }, [ticker]);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      setData(undefined);
 
       const fetchedData = await getApi(
-        `/api/av/stocks?ticker=${ticker}&interval=MONTHLY`,
+        `/api/av/stocks?ticker=${ticker}&interval=DAILY`,
       );
 
       setData(fetchedData);
-
       setLoading(false);
     };
 
@@ -34,7 +62,7 @@ const StockDashboard = () => {
           {loading && (
             <div>
               <p>Loading...</p>
-              <p>Backend server may take a moment to wake up.</p>
+              <p>Loading... Backend server may take a moment to wake up.</p>
             </div>
           )}
           <ChartForm
@@ -42,10 +70,17 @@ const StockDashboard = () => {
             label="Ticker"
             value={ticker}
             values={tickers}
+            setTickers={setTickers}
             onChange={setTicker}
           />
+          {data && <Trend
+            name={ticker}
+            data={data}
+          />}
         </aside>
+        <main className="content">
         {data && <ChartCard data={data} />}
+        </main>
       </div>
     </>
   );

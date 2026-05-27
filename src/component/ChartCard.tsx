@@ -1,6 +1,6 @@
 import "../App";
-import ChartLine from "./ChartLine";
 import type { StockData } from "../types/stock";
+import ChartArea from "./ChartArea";
 
 type Props = {
   data: StockData;
@@ -10,7 +10,7 @@ const ChartCard = ({ data }: Props) => {
   return (
     <>
       <div className="section">
-        <ChartLine label={data.ticker} data={data.points} />
+        <ChartArea label={data.ticker} data={data.points} />
       </div>
     </>
   );

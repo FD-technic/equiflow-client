@@ -1,21 +1,22 @@
 
 type Props = {
     id: string;
-    label: string;
+    name: string;
     values: string[];
     value: string;
     onChange: (ticker: string) => void;
 }
 
-const Select = ({ label, values, onChange }: Props) => {
+const Select = ({ id, name, value, values, onChange }: Props) => {
 
     return (
         <>
-        <label htmlFor={label}>Chose a {label} : </label>
+        <label htmlFor={name}>Choose a {name} : </label>
 
         <select
-            name={label}
-            id={label}
+            name={name}
+            id={id}
+            value={value}
             onChange={(e) => onChange(e.target.value)}
         >
             {values.map((value) => (

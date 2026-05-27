@@ -1,11 +1,13 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
 export const getApi = async (endpoint: string) => {
+    console.log("URL:", API_URL);
+    
     const response = await fetch(`${API_URL}${endpoint}`);
 
     if (!response.ok) {
         throw new Error("API request failed");
     }
-    console.log("GET: ", response);
+    
     return response.json();
 }

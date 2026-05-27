@@ -59,6 +59,7 @@
 .chart-container {
     width: 100%;
     height: 400px;
+    margin-bottom: 2em;
 }
 
 .chart {
@@ -67,4 +68,32 @@
     margin: 2em;
     padding: 1em;
     font-weight: 800;
+}
+
+.trend * {
+    margin: 0;
+    padding: 0;
+}
+
+.trend.title {
+    font-size: 18px;
+    font-weight: 500;
+    border-bottom: solid 2px black;
+}
+
+.trend-positive {
+    color: rgb(26, 172, 26);
+}
+
+.trend-negative {
+    color: red;
+}
+
+.trend p {
+    font-size: 14px;
+}
+
+.trend-values {
+    font-size: 16px;
+    font-weight: 500;
 }

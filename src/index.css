@@ -108,8 +108,8 @@ p {
 }
 
 .section {
-  padding: 1em 2em;
-  margin: 2em;
+  padding: 1em .5em;
+  margin: 0.75em;
   margin-top: 1em;
   border-radius: 1em;
   background-color: #c2dac7;
