@@ -9,15 +9,19 @@ const tickers = ["QQQ", "AAPL", "SPY", "NVDA", "MSFT", "TSLA"];
 const StockDashboard = () => {
   const [ticker, setTicker] = useState("QQQ");
   const [data, setData] = useState<StockData>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+
       const fetchedData = await getApi(
         `/api/av/stocks?ticker=${ticker}&interval=MONTHLY`,
       );
 
       setData(fetchedData);
-      console.log("Fetched Data: ", fetchedData);
+
+      setLoading(false);
     };
 
     fetchData();
@@ -27,6 +31,12 @@ const StockDashboard = () => {
     <>
       <div className="layout">
         <aside className="sidebar">
+          {loading && (
+            <div>
+              <p>Loading...</p>
+              <p>Backend server may take a moment to wake up.</p>
+            </div>
+          )}
           <ChartForm
             id="ticker"
             label="Ticker"
