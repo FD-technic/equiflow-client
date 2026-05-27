@@ -8,8 +8,8 @@ function App() {
   return (
     <>
       <Header />
-      <h2>EquiFlow - dashboard</h2>
-         <StockDashboard />
+      
+      <StockDashboard />
       
       <Footer />
     </>

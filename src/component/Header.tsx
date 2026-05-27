@@ -1,19 +1,26 @@
+import { useState } from "react";
 import "../index.css";
 import "../style.css";
+import ContactModal from "./ContactModal";
 
 const Header = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <>
       <div className="header">
         <h1>Equi<span>Flow</span></h1>
         <nav className="nav">
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><button onClick={() => setIsModalOpen(true)} className="btn">Contact</button></li>
           </ul>
         </nav>
       </div>
+      <ContactModal
+       isOpen={isModalOpen}
+       onClose={() => setIsModalOpen(false)}
+
+      />      
     </>
   );
 };

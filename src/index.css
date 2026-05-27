@@ -94,6 +94,7 @@ h1 {
     margin: 20px 0;
   }
 }
+
 h2 {
   font-size: 24px;
   line-height: 118%;
@@ -103,6 +104,18 @@ h2 {
     font-size: 20px;
   }
 }
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 118%;
+  letter-spacing: -0.20px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
 p {
   margin: 0;
 }

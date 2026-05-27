@@ -1,4 +1,5 @@
 import "../index.css";
+import "../style.css";
 
 const Footer = () => {
 
@@ -6,7 +7,7 @@ const Footer = () => {
         <>
         <div className="footer">
         
-        <p>Pedro &copy; 2026</p>
+        <p>&copy; 2026 Petr Hron • <a href="http://www.fdweb.cz">fdweb.cz</a></p>
 
         </div>
         </>
