@@ -20,6 +20,7 @@ const Trend = ({ name, data }: Props) => {
         <div className="trend-values">
           {start?.toFixed(2)} / {end?.toFixed(2)}
         </div>
+        <p>Weekly performance</p>
         <h3 className={progress >= 0 ? "trend-positive" : "trend-negative"}>
           {progress > 0 ? "+" : ""}
           {progress.toFixed(3)}%
