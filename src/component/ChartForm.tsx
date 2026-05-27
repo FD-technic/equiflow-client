@@ -1,15 +1,15 @@
-import type { Ticker } from "../data/tickers";
+import type { TickerConfig } from "../data/tickers";
 import Select from "./Select";
 
 type Props = {
   id: string;
   label: string;
-  values: string[];
+  values: TickerConfig[];
   value: string;
   setTickers: React.Dispatch<
-    React.SetStateAction<Ticker[]>
+    React.SetStateAction<TickerConfig[]>
   >;
-  onChange: (ticker: string) => void;
+  onChange: (tickerConfig: TickerConfig) => void;
 };
 
 const ChartForm = ({ id, label, value, values, onChange }: Props) => {
@@ -24,7 +24,6 @@ const ChartForm = ({ id, label, value, values, onChange }: Props) => {
           onChange={onChange}
         />
       </form>
-
     </>
   );
 };

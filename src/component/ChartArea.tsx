@@ -1,6 +1,7 @@
 import "../index.css";
 import "../style.css";
 import type { StockPoint } from "../types/stock";
+import type { TickerConfig } from "../data/tickers";
 
 import {
   XAxis,
@@ -13,7 +14,7 @@ import {
 } from "recharts";
 
 type Props = {
-  label: string;
+  label: TickerConfig;
   data: StockPoint[];
 };
 
@@ -23,7 +24,7 @@ const ChartArea = ({ label, data }: Props) => {
     <>
       <div className="section chart">
         <div className="chart-container">
-          <h3>{label}</h3>
+          <h3>{label.symbol}</h3>
           <ResponsiveContainer width="100%" height={380}>
             <AreaChart data={data}>
               <CartesianGrid strokeDasharray="3 3" />

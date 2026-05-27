@@ -1,5 +1,27 @@
-export const DEFAULT_TICKERS = [
-    "QQQ", "AAPL", "SPY", "NVDA", "MSFT", "TSLA", "BTCUSD", "ETHUSD"
-];
+export type TickerConfig = {
+    symbol: string;
+    period: string;
+};
 
-export type Ticker = typeof DEFAULT_TICKERS[number];
+export const TICKERS: TickerConfig[] = [
+    {
+        symbol: "QQQ",
+        period: "DAILY",
+    },
+    {
+        symbol: "SPY",
+        period: "DAILY",
+    },
+    {
+        symbol: "NVDA",
+        period: "DAILY",
+    },
+    {
+        symbol: "MSFT",
+        period: "DAILY",
+    },
+    {
+        symbol: "TSLA",
+        period: "DAILY",
+    },
+];

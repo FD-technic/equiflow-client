@@ -4,40 +4,33 @@ import { useEffect, useState } from "react";
 import ChartCard from "./ChartCard";
 import { getApi } from "../api/getApi";
 import type { StockData } from "../types/stock";
-import { DEFAULT_TICKERS, type Ticker } from "../data/tickers";
+import { TICKERS, type TickerConfig } from "../data/tickers";
 import Trend from "./Trend";
 import ChartForm from "./ChartForm";
 
 const StockDashboard = () => {
   const [data, setData] = useState<StockData>();
   const [loading, setLoading] = useState(true);
-  const [tickers, setTickers] = useState<Ticker[]>(() => {
+
+  const [tickers, setTickers] = useState<TickerConfig[]>(() => {
     const saved = localStorage.getItem("tickers");
 
     if (saved) {
-      return JSON.parse(saved) as Ticker[];
+      return JSON.parse(saved) as TickerConfig[];
     }
 
-    return DEFAULT_TICKERS;
+    return TICKERS;
   });
 
-  const [ticker, setTicker] = useState<Ticker>(() => {
-    const savedTicker = localStorage.getItem("lastTicker");
-
-    if (savedTicker) {
-      return savedTicker;
-    }
-
-    return tickers[0];
-  });
+  const [selectedTicker, setSelectedTicker] = useState(TICKERS[0]);
 
   useEffect(() => {
     localStorage.setItem("tickers", JSON.stringify(tickers));
   }, [tickers]);
 
   useEffect(() => {
-    localStorage.setItem("lastTicker", ticker);
-  }, [ticker]);
+    localStorage.setItem("lastTicker", selectedTicker.symbol);
+  }, [selectedTicker]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +38,7 @@ const StockDashboard = () => {
       setData(undefined);
 
       const fetchedData = await getApi(
-        `/api/av/stocks?ticker=${ticker}&interval=DAILY`,
+        `/api/av/stocks?ticker=${selectedTicker.symbol}&interval=${selectedTicker.period}`,
       );
 
       setData(fetchedData);
@@ -53,7 +46,7 @@ const StockDashboard = () => {
     };
 
     fetchData();
-  }, [ticker]);
+  }, [selectedTicker]);
 
   return (
     <>
@@ -67,14 +60,14 @@ const StockDashboard = () => {
           )}
           <ChartForm
             id="ticker"
-            label="Ticker"
-            value={ticker}
+            label="ticker"
+            value={selectedTicker.symbol}
             values={tickers}
             setTickers={setTickers}
-            onChange={setTicker}
+            onChange={setSelectedTicker}
           />
           {data && <Trend
-            name={ticker}
+            name={selectedTicker.symbol}
             data={data}
           />}
         </aside>
