@@ -12,7 +12,7 @@ const StockDashboard = () => {
   const [data, setData] = useState<StockData>();
   const [loading, setLoading] = useState(true);
 
-  const [tickers, setTickers] = useState<TickerConfig[]>(() => {
+  const [tickers] = useState<TickerConfig[]>(() => {
     const saved = localStorage.getItem("tickers");
 
     if (saved) {
