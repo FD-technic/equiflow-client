@@ -38,7 +38,7 @@ const StockDashboard = () => {
       setData(undefined);
 
       const fetchedData = await getApi(
-        `/api/av/stocks?ticker=${selectedTicker.symbol}&interval=${selectedTicker.period}`,
+        `/api/stocks/av?ticker=${selectedTicker.symbol}&interval=${selectedTicker.period}`,
       );
 
       setData(fetchedData);
@@ -63,7 +63,6 @@ const StockDashboard = () => {
             label="ticker"
             value={selectedTicker.symbol}
             values={tickers}
-            setTickers={setTickers}
             onChange={setSelectedTicker}
           />
           {data && <Trend

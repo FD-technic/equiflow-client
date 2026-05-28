@@ -12,7 +12,7 @@ const Select = ({ id, name, value, values, onChange }: Props) => {
 
     return (
         <>
-        <label htmlFor={name}>Choose a {name} : </label>
+        <label htmlFor={id}>Choose a {name} : </label>
 
         <select
             name={name}

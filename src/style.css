@@ -120,7 +120,7 @@
 
 .modal {
     min-width: 300px;
-    background-color: rgb(191, 202, 191);
+    background-color: rgb(215, 230, 215);
     padding: 1rem;
     border: solid 2px black;
     border-radius: 1rem;
@@ -142,14 +142,14 @@
 
 .btn-modal {
     padding: 0.2em .5em;
-    background-color: rgba(116, 151, 111, 0.1);
+    background-color: rgba(75, 120, 80, 0.1);
     color: rgba(0, 0, 0, 0.432);
     border-radius: 3px;
     border: solid 1px black;
 }
 
 .btn:hover {
-    background-color: rgba(75, 119, 82, 0.4);
+    background-color: rgba(75, 120, 80, 0.3);
     color: rgba(0, 0, 0, 0.8);
 }
 
@@ -170,7 +170,7 @@
 
 .modal a:hover {
     padding: .25em .5em;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(124, 214, 151, 0.726);
     border: solid 1px rgb(16, 17, 16);
     
 }
