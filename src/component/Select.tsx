@@ -28,8 +28,8 @@ const Select = ({ id, name, value, values, onChange }: Props) => {
                 }
             }}
         >
-            {values.map((ticker) => (
-                <option key={ticker.symbol} value={ticker.symbol}>
+            {values.map((ticker, index) => (
+                <option key={`${ticker.symbol}-${index}`} value={ticker.symbol}>
                     {ticker.symbol}
                 </option>
             ))}            
