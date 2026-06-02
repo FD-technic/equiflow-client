@@ -4,49 +4,77 @@ import { useEffect, useState } from "react";
 import ChartCard from "./ChartCard";
 import { getApi } from "../api/getApi";
 import type { StockData } from "../types/stock";
-import { TICKERS, type TickerConfig } from "../data/tickers";
+import type { ChartQuery } from "../types/chart";
+import { TICKERS, type Ticker } from "../data/tickers";
+import { PERIODS, type Period } from "../data/periods";
 import Trend from "./Trend";
 import ChartForm from "./ChartForm";
 
 const StockDashboard = () => {
   const [data, setData] = useState<StockData>();
+  const [query, setQuery] = useState<ChartQuery>({
+    ticker: TICKERS[0],
+    period: PERIODS[0]
+  });
+
+  const [timeStamp, setTimeStamp] = useState<string>();
+  const date = timeStamp ? new Date(timeStamp) : null;
+  
   const [loading, setLoading] = useState(true);
 
-  const [tickers] = useState<TickerConfig[]>(() => {
+  const [tickers] = useState<Ticker[]>(() => {
     const saved = localStorage.getItem("tickers");
 
     if (saved) {
-      return JSON.parse(saved) as TickerConfig[];
+      return JSON.parse(saved) as Ticker[];
     }
 
     return TICKERS;
   });
 
-  const [selectedTicker, setSelectedTicker] = useState(TICKERS[0]);
+  const [periods] = useState<Period[]>(() => {
+    const saved = localStorage.getItem("periods");
+
+    if (saved) {
+      return JSON.parse(saved) as Period[];
+    }
+
+    return PERIODS;
+  });
 
   useEffect(() => {
     localStorage.setItem("tickers", JSON.stringify(tickers));
   }, [tickers]);
 
   useEffect(() => {
-    localStorage.setItem("lastTicker", selectedTicker.symbol);
-  }, [selectedTicker]);
+    localStorage.setItem("lastTicker", query.ticker.value);
+    localStorage.setItem("lastPeriod", query.period.value);
+  }, [query]);
+
+  useEffect(() => {
+    localStorage.setItem("periods", JSON.stringify(periods));
+  }, [periods]);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
+      try {
+        setLoading(true);
       setData(undefined);
+      const request = `/api/stocks/av?ticker=${query.ticker.value}&period=${query.period.value}`;
+      console.log("Request: ", request);
+      const fetchedData = await getApi(request);
 
-      const fetchedData = await getApi(
-        `/api/stocks/av?ticker=${selectedTicker.symbol}&interval=${selectedTicker.period}`,
-      );
-
-      setData(fetchedData);
-      setLoading(false);
+      setData(fetchedData.stock);
+      setTimeStamp(fetchedData.lastUpdate);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchData();
-  }, [selectedTicker]);
+  }, [query]);
 
   return (
     <>
@@ -55,23 +83,32 @@ const StockDashboard = () => {
           {loading && (
             <div>
               <p>Loading...</p>
-              <p>Loading... Backend server may take a moment to wake up.</p>
+              <p>Backend server may take a moment to wake up.</p>
             </div>
           )}
           <ChartForm
-            id="ticker"
-            label="ticker"
-            value={selectedTicker.symbol}
-            values={tickers}
-            onChange={setSelectedTicker}
+            id="form"
+            value={query}
+            onChange={setQuery}
           />
           {data && <Trend
-            name={selectedTicker.symbol}
+            name={query.ticker.label}
             data={data}
           />}
         </aside>
         <main className="content">
-        {data && <ChartCard data={data} />}
+        {data && (
+          <div>
+            <p>
+              Last Update: {
+                date 
+                ? `${date?.toLocaleDateString("cs-CZ")} / ${date?.toLocaleTimeString("cs-CZ")}` : "N/A"
+              } 
+            </p>  
+          <ChartCard data={data} />
+          </div>
+          )
+        }
         </main>
       </div>
     </>

@@ -1,14 +1,21 @@
-import type { TickerConfig } from "../data/tickers";
 
-type Props = {
+
+type Props<T extends { label: string, value: string }> = {
     id: string;
     name: string;
-    values: TickerConfig[];
+    label: string;
+    values: T[];
     value: string;
-    onChange: (ticker: TickerConfig) => void;
+    onChange: (item: T) => void;
 }
 
-const Select = ({ id, name, value, values, onChange }: Props) => {
+const Select = <T extends { label: string, value: string }>({
+    id,
+    name,
+    value,
+    values,
+    onChange
+ }: Props<T>) => {
 
     return (
         <>
@@ -19,18 +26,18 @@ const Select = ({ id, name, value, values, onChange }: Props) => {
             id={id}
             value={value}
             onChange={(e) => {
-                const selectedTicker = values.find(
-                    (ticker) => ticker.symbol === e.target.value
-                );
+                const selectedItem = values.find(
+        item => item.value === e.target.value
+    );
 
-                if (selectedTicker) {
-                    onChange(selectedTicker);
+                if (selectedItem) {
+                    onChange(selectedItem);
                 }
             }}
         >
-            {values.map((ticker, index) => (
-                <option key={`${ticker.symbol}-${index}`} value={ticker.symbol}>
-                    {ticker.symbol}
+            {values.map((item) => (
+                <option key={item.value} value={item.value}>
+                    {item.label}
                 </option>
             ))}            
         </select>

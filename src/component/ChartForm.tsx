@@ -1,24 +1,48 @@
-import type { TickerConfig } from "../data/tickers";
+import { TICKERS } from "../data/tickers";
+import { PERIODS } from "../data/periods";
 import Select from "./Select";
+import type { ChartQuery } from "../types/chart";
 
 type Props = {
-  id: string;
-  label: string;
-  values: TickerConfig[];
-  value: string;
-  onChange: (tickerConfig: TickerConfig) => void;
+  id: string
+  value: ChartQuery;
+  onChange: (chartQuery: ChartQuery) => void;
 };
 
-const ChartForm = ({ id, label, value, values, onChange }: Props) => {
+const ChartForm = ({ id, value, onChange }: Props) => {
+   
   return (
-    <div className="section">
-      <Select
-        id={id}
-        name={label}
-        values={values}
-        value={value}
-        onChange={onChange}
+    <div className="section" id={id}>
+      <div>
+        <Select
+        id={"ticker"}
+        name={"ticker"}
+        label={"ticker"}
+        values={TICKERS}
+        value={value.ticker.value}
+        onChange={(ticker) => 
+          onChange({
+            ...value,
+            ticker
+          })
+        }
       />
+      </div>
+      <div>
+        <Select
+        id={"period"}
+        name={"period"}
+        label={"period"}
+        values={PERIODS}
+        value={value.period.value}
+        onChange={(period) => 
+          onChange({
+            ...value,
+            period
+          })
+        }
+      />
+      </div>
     </div>
   );
 };

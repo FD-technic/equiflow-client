@@ -1,27 +1,31 @@
-export type TickerConfig = {
-    symbol: string;
-    period: string;
+export type Ticker = {
+    label: string;
+    value: string;
 };
 
-export const TICKERS: TickerConfig[] = [
+export const TICKERS: Ticker[] = [
     {
-        symbol: "QQQ",
-        period: "DAILY",
+        label: "QQQ Trust",
+        value: "QQQ",
     },
     {
-        symbol: "SPY",
-        period: "DAILY",
+        label: "Apple",
+        value: "AAPL",
     },
     {
-        symbol: "NVDA",
-        period: "DAILY",
+        label: "S&P 500",
+        value: "SPY",
     },
     {
-        symbol: "MSFT",
-        period: "DAILY",
+        label: "Nvidia",
+        value: "NVDA",
     },
     {
-        symbol: "TSLA",
-        period: "DAILY",
+        label: "Microsoft",
+        value: "MSFT",
+    },
+    {
+        label: "Tesla",
+        value: "TSLA",
     },
 ];

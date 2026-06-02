@@ -48,7 +48,7 @@ const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               <div>
                 <img src={linkedin} height="22px"></img>
                 <a
-                  href="https://www.linkedin.com/in/petr-hron-409415a0/"
+                  href="https://www.linkedin.com/in/petr-hron-dev/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
