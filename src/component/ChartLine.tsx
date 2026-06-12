@@ -1,5 +1,3 @@
-import "../index.css";
-import "../style.css";
 import type { StockPoint } from "../types/stock";
 
 import {
@@ -18,12 +16,13 @@ type Props = {
 };
 
 const ChartLine = ({ label, data }: Props) => {
+
   return (
     <div className="section chart">
       <div className="chart-container">
         <h3>{label}</h3>
 
-        <ResponsiveContainer width="100%" height={380}>
+        <ResponsiveContainer width="100%" height={280}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
 

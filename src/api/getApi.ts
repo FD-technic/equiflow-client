@@ -8,6 +8,6 @@ export const getApi = async (endpoint: string) => {
     if (!response.ok) {
         throw new Error("API request failed");
     }
-    
+
     return response.json();
 }

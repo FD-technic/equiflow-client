@@ -1,0 +1,13 @@
+.chart-container {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 2em;
+}
+
+.chart {
+    background-color: var(--surface-color);
+    color: var(--text-dark);
+    margin: 2em;
+    padding: 1em;
+    font-weight: 800;
+}

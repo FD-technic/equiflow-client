@@ -1,0 +1,72 @@
+:root {
+    --bg: rgb(215, 230, 215);
+    --border: rgba(36, 142, 36, 0.6);
+    --blur: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    min-width: 300px;
+    background-color: var(--bg);
+    padding: 1rem;
+    border: solid 5px var(--border);
+    border-radius: 1rem;
+}
+
+.modal h2,
+.modal h3 {
+    border-bottom: solid 3px var(--accent-color);
+}
+.modal h2 {
+    margin-top: 1em;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-modal {
+    padding: 0.2em .5em;
+    background-color: rgba(75, 120, 80, 0.1);
+    color: var(--blur);
+    border-radius: 3px;
+    border: solid 1px var(--border);
+}
+
+.btn:hover {
+    background-color: rgba(75, 120, 80, 0.3);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.modal a {
+    text-decoration: none;
+    padding: .2em .4em;
+    margin-left: 1em;
+    font-weight: 600;
+    color: rgb(76, 95, 75);
+    border: solid 3px var(--border);
+    border-radius: .5em;
+}
+
+.modal a:hover {
+    padding: .25em .5em;
+    background-color: rgba(124, 214, 151, 0.726);
+    border: solid 2px var(--border);
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--blur);
+    z-index: 4000;
+}
+
+.modal-block {
+    margin: 1em 0;
+    line-height: 2.5em;
+}

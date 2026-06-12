@@ -1,0 +1,28 @@
+.trend * {
+    margin: 0;
+    padding: 0;
+}
+
+.trend.title {
+    font-size: 18px;
+    font-weight: 500;
+    padding-bottom: .5em;
+    border-bottom: solid 2px rgb(77, 145, 51);
+}
+
+.trend-positive {
+    color: rgb(26, 172, 26);
+}
+
+.trend-negative {
+    color: red;
+}
+
+.trend p {
+    font-size: 14px;
+}
+
+.trend-values {
+    font-size: 16px;
+    font-weight: 500;
+}

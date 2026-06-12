@@ -1,6 +1,4 @@
 import { useState } from "react";
-import "../index.css";
-import "../style.css";
 import ContactModal from "./ContactModal";
 
 const Header = () => {

@@ -14,12 +14,12 @@ const StockDashboard = () => {
   const [data, setData] = useState<StockData>();
   const [query, setQuery] = useState<ChartQuery>({
     ticker: TICKERS[0],
-    period: PERIODS[0]
+    period: PERIODS[0],
   });
 
   const [timeStamp, setTimeStamp] = useState<string>();
   const date = timeStamp ? new Date(timeStamp) : null;
-  
+
   const [loading, setLoading] = useState(true);
 
   const [tickers] = useState<Ticker[]>(() => {
@@ -42,6 +42,8 @@ const StockDashboard = () => {
     return PERIODS;
   });
 
+  const [error, setError] = useState<string>();
+
   useEffect(() => {
     localStorage.setItem("tickers", JSON.stringify(tickers));
   }, [tickers]);
@@ -59,15 +61,20 @@ const StockDashboard = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-      setData(undefined);
-      const request = `/api/stocks/av?ticker=${query.ticker.value}&period=${query.period.value}`;
-      console.log("Request: ", request);
-      const fetchedData = await getApi(request);
+        setData(undefined);
+        setError(undefined);
 
-      setData(fetchedData.stock);
-      setTimeStamp(fetchedData.lastUpdate);
+        const request = `/api/stocks/av?ticker=${query.ticker.value}&period=${query.period.value}`;
+        const fetchedData = await getApi(request);
+
+        setData(fetchedData);
+        setTimeStamp(fetchedData.updateAt);
       } catch (error) {
         console.error(error);
+
+        setError(
+          "Date are currently unavailable. The provider may have reached its request limit."
+        );
       } finally {
         setLoading(false);
       }
@@ -79,7 +86,7 @@ const StockDashboard = () => {
   return (
     <>
       <div className="layout">
-        <aside className="sidebar">
+        <div className="sidebar">
           {loading && (
             <div>
               <p>Loading...</p>
@@ -91,25 +98,37 @@ const StockDashboard = () => {
             value={query}
             onChange={setQuery}
           />
-          {data && <Trend
-            name={query.ticker.label}
-            data={data}
-          />}
-        </aside>
-        <main className="content">
-        {data && (
-          <div>
-            <p>
-              Last Update: {
-                date 
-                ? `${date?.toLocaleDateString("cs-CZ")} / ${date?.toLocaleTimeString("cs-CZ")}` : "N/A"
-              } 
-            </p>  
-          <ChartCard data={data} />
-          </div>
-          )
-        }
-        </main>
+          {data && (
+            <Trend
+              name={query.ticker.label}
+              period={query.period}
+              data={data.points}
+            />
+          )}
+        </div>
+        <div className="content">
+          {error && (
+            <div className="big-text">
+              <p>
+                Data are currently unavailable.
+              </p>
+              <p>
+                Try another ticker or period.
+              </p>
+            </div>
+          )}
+          {!error && data && (
+            <div>
+              <div className="strong">
+                Last Update:{" "}
+                {date
+                  ? `${date?.toLocaleDateString("cs-CZ")} / ${date?.toLocaleTimeString("cs-CZ")}`
+                  : "N/A"}
+              </div>
+              <ChartCard data={data} />
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

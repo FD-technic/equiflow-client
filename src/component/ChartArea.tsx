@@ -1,5 +1,3 @@
-import "../index.css";
-import "../style.css";
 import type { StockPoint } from "../types/stock";
 
 import {
@@ -18,14 +16,21 @@ type Props = {
 };
 
 const ChartArea = ({ label, data }: Props) => {
-  
   return (
     <>
       <div className="section chart">
         <div className="chart-container">
           <h3>{label}</h3>
-          <ResponsiveContainer width="100%" height={380}>
-            <AreaChart data={data}>
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              data={data}
+              margin={{
+                top: 10,
+                right: 5,
+                left: -30,
+                bottom: 20,
+              }}
+            >
               <CartesianGrid strokeDasharray="3 3" />
 
               <XAxis
@@ -36,9 +41,7 @@ const ChartArea = ({ label, data }: Props) => {
                 textAnchor="end"
               />
 
-              <YAxis
-                tick={{ fontSize: 14 }}
-              />
+              <YAxis tick={{ fontSize: 11 }} />
 
               <Tooltip />
 
@@ -52,7 +55,7 @@ const ChartArea = ({ label, data }: Props) => {
 
               <Area
                 type="monotone"
-                dataKey="price"
+                dataKey="close"
                 stroke="#3f8f3f"
                 fill="url(#colorPrice)"
               />

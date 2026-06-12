@@ -2,6 +2,7 @@ import github from "../assets/github-logo.png";
 import linkedin from "../assets/linkedin-logo.png";
 import mail from "../assets/email.png";
 import { useEffect } from "react";
+import "./Modal.css";
 
 type ContactModalProps = {
   isOpen: boolean;

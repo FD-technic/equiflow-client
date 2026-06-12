@@ -1,6 +1,10 @@
 export type StockPoint = {
     date: string;
-    price: number;
+    open: number;
+    high: number;
+    low: number;
+    close: number;
+    volume: number;
 };
 
 export type StockData = {
