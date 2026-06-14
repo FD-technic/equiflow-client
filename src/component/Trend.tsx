@@ -42,10 +42,10 @@ const Trend = ({ name, period, data }: Props) => {
           {start?.toFixed(2)} / {end?.toFixed(2)}
         </div>
         <p>{performanceLabel} performance</p>
-        <h3 className={progress >= 0 ? "trend-positive" : "trend-negative"}>
+        <h4 className={progress >= 0 ? "trend-positive" : "trend-negative"}>
           {progress > 0 ? "+" : ""}
           {progress.toFixed(3)}%
-        </h3>
+        </h4>
       </div>
     </>
   );

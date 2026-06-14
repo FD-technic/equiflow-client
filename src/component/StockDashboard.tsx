@@ -119,7 +119,7 @@ const StockDashboard = () => {
           )}
           {!error && data && (
             <div>
-              <div className="strong">
+              <div className="update-form">
                 Last Update:{" "}
                 {date
                   ? `${date?.toLocaleDateString("cs-CZ")} / ${date?.toLocaleTimeString("cs-CZ")}`

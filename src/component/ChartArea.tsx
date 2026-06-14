@@ -1,4 +1,5 @@
 import type { StockPoint } from "../types/stock";
+import "./Chart.css";
 
 import {
   XAxis,
@@ -16,12 +17,14 @@ type Props = {
 };
 
 const ChartArea = ({ label, data }: Props) => {
+  console.log("Chart data:", data);
+  
   return (
     <>
       <div className="section chart">
         <div className="chart-container">
-          <h3>{label}</h3>
-          <ResponsiveContainer width="100%" height="100%">
+          <h4>{label}</h4>
+          <ResponsiveContainer width="100%" height={300}>
             <AreaChart
               data={data}
               margin={{
