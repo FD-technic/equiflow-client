@@ -1,17 +1,18 @@
 import "../App";
-import type { StockData } from "../types/stock";
+import type { StockPoint } from "../types/stock";
 import ChartArea from "./ChartArea";
 import "./Chart.css";
 
 type Props = {
-  data: StockData;
+  ticker: string;
+  data: StockPoint[];
 };
 
-const ChartCard = ({ data }: Props) => {
+const ChartCard = ({ ticker, data }: Props) => {
   console.log("DATA: ", data);
 
   return (
-      <ChartArea label={data.ticker} data={data.points} />
+      <ChartArea label={ticker} data={data} />
   );
 };
 

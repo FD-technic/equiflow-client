@@ -83,6 +83,10 @@ const StockDashboard = () => {
     fetchData();
   }, [query]);
 
+  const chartData = data?.points
+  ? [...data.points].reverse()
+  : [];
+
   return (
     <>
       <div className="layout">
@@ -102,7 +106,7 @@ const StockDashboard = () => {
             <Trend
               name={query.ticker.label}
               period={query.period}
-              data={data.points}
+              data={chartData}
             />
           )}
         </div>
@@ -125,7 +129,9 @@ const StockDashboard = () => {
                   ? `${date?.toLocaleDateString("cs-CZ")} / ${date?.toLocaleTimeString("cs-CZ")}`
                   : "N/A"}
               </div>
-              <ChartCard data={data} />
+              <ChartCard
+                ticker={data.ticker}
+                data={chartData} />
             </div>
           )}
         </div>
