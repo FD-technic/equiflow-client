@@ -1,37 +1,19 @@
-import type { Period } from "../data/periods";
 import type { StockPoint } from "../types/stock";
 import "./Trend.css";
 
 type Props = {
   name: string;
-  period: Period;
+  period: number;
   data: StockPoint[];
 };
 
-const Trend = ({ name, period, data }: Props) => {
-  let performanceLabel;
-  let slicing;
-
-  switch (period.value) {
-    case "DAY":
-      performanceLabel = "Weekly";
-      slicing = -7;
-      break;
-      case "WEEK":
-      performanceLabel = "Quarterly";
-      slicing = -14;
-      break;
-    default:
-      performanceLabel = "Yearly";
-      slicing = -13;
-      
-  }
+const Trend = ({ name, data }: Props) => {
+        
    
-  const performancePeriod = data?.slice(slicing);
-  const start = performancePeriod?.[0].close;
-  const end = performancePeriod?.[performancePeriod.length - 1].close;
+  const start = data?.[0].close;
+  const end = data?.[data.length - 1].close;
   const progress =
-    start !== undefined && end !== undefined ? (end / start - 1) * 100 : 0;
+    start !== undefined && end !== undefined ? ((end - start) / start) * 100 : 0;
 
   return (
     <>
@@ -41,7 +23,7 @@ const Trend = ({ name, period, data }: Props) => {
         <div className="trend-values">
           {start?.toFixed(2)} / {end?.toFixed(2)}
         </div>
-        <p>{performanceLabel} performance</p>
+        <p>Performance</p>
         <h4 className={progress >= 0 ? "trend-positive" : "trend-negative"}>
           {progress > 0 ? "+" : ""}
           {progress.toFixed(3)}%

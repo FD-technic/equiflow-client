@@ -13,10 +13,10 @@ const ChartForm = ({ id, value, onChange }: Props) => {
    
   return (
     <div className="section" id={id}>
-      <div>
+      <div className="sidebar">
         <Select
         id={"ticker"}
-        name={"ticker"}
+        name={"Ticker"}
         label={"ticker"}
         values={TICKERS}
         value={value.ticker.value}
@@ -26,12 +26,11 @@ const ChartForm = ({ id, value, onChange }: Props) => {
             ticker
           })
         }
-      />
-      </div>
-      <div>
+        />
+      
         <Select
         id={"period"}
-        name={"period"}
+        name={"Range"}
         label={"period"}
         values={PERIODS}
         value={value.period.value}

@@ -6,7 +6,7 @@ import { getApi } from "../api/getApi";
 import type { StockData } from "../types/stock";
 import type { ChartQuery } from "../types/chart";
 import { TICKERS, type Ticker } from "../data/tickers";
-import { PERIODS, type Period } from "../data/periods";
+import { PERIODS, type Period} from "../data/periods";
 import Trend from "./Trend";
 import ChartForm from "./ChartForm";
 
@@ -64,7 +64,7 @@ const StockDashboard = () => {
         setData(undefined);
         setError(undefined);
 
-        const request = `/api/stocks/av?ticker=${query.ticker.value}&period=${query.period.value}`;
+        const request = `/api/stocks/av?ticker=${query.ticker.value}&period=${query.period.period}`;
         const fetchedData = await getApi(request);
 
         setData(fetchedData);
@@ -84,7 +84,7 @@ const StockDashboard = () => {
   }, [query]);
 
   const chartData = data?.points
-  ? [...data.points].reverse()
+  ? [...data.points].slice(0,query.period.days).reverse()
   : [];
 
   return (
@@ -105,7 +105,7 @@ const StockDashboard = () => {
           {data && (
             <Trend
               name={query.ticker.label}
-              period={query.period}
+              period={query.period.days}
               data={chartData}
             />
           )}

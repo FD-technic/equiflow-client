@@ -19,7 +19,7 @@ const Select = <T extends { label: string, value: string }>({
 
     return (
         <>
-        <label htmlFor={id}>Choose a {name} : </label>
+        <label htmlFor={id}>{name}: </label>
 
         <select
             name={name}
@@ -39,7 +39,7 @@ const Select = <T extends { label: string, value: string }>({
                 <option key={item.value} value={item.value}>
                     {item.label}
                 </option>
-            ))}            
+            ))}
         </select>
         </>
     );
