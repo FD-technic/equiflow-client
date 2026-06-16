@@ -1,73 +1,149 @@
-# React + TypeScript + Vite
+# EquiFlow Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontendová část projektu EquiFlow.
 
-Currently, two official plugins are available:
+EquiFlow je experimentální projekt zaměřený na práci s historickými daty finančních aktiv (akcie, ETF).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Projekt se skládá z:
 
-## React Compiler
+* backendového REST API postaveného na Spring Boot
+* frontendového dashboardu postaveného na Reactu
+* PostgreSQL databáze pro ukládání historických dat
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Cílem projektu je postupně vybudovat jednoduchý analytický engine pro práci s finančními časovými řadami a investičními daty.
 
-## Expanding the ESLint configuration
+## Související repozitáře
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Frontend:
+https://github.com/FD-technic/equiflow-client
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Backend:
+https://github.com/FD-technic/equiflow-backend
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Live Demo
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+#### Frontend: https://equiflow.ferdo.eu
+#### API: https://api.equiflow.ferdo.eu
+
+---
+
+## Popis
+Frontend poskytuje webové rozhraní pro vizualizaci historických dat finančních aktiv.
+
+Data jsou načítána z backendového API a zobrazována pomocí interaktivních grafů a přehledových statistik.
+
+## Ukázka aplikace
+
+![EquiFlow Dashboard](docs/images/dashboard.png)
+
+
+## Funkce
+- zobrazení historických dat finančních aktiv
+- výběr ticker symbolu
+- přepínání časového období
+- interaktivní graf vývoje ceny
+- zobrazení základního výnosu
+- komunikace s backend REST API
+
+## Technologie
+- React
+- TypeScript
+- Vite
+- CSS
+
+## Architektura
+```
+Browser
+    │
+    ▼
+React Client
+    │
+    ▼
+REST API
+    │
+    ▼
+Spring Boot Backend
+    │
+    ▼
+PostgreSQL
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Spuštění projektu
+### Požadavky
+- Node.js 20+
+- npm
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Instalace
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+V kořenové složce projektu:
+
+```bash
+npm install
 ```
+
+### Spuštění
+
+```bash
+npm run dev
+```
+
+Po spuštění bude aplikace dostupná na:
+
+http://localhost:5173
+
+
+### Build produkční verze
+
+```bash
+npm run build
+```
+
+Výstup bude vytvořen ve složce:
+
+dist
+
+### Konfigurace
+
+Adresa backend API se nastavuje pomocí konfiguračních proměnných.
+
+Například:
+
+VITE_API_URL=http://localhost:8080
+
+### Uživatelské rozhraní
+
+Dashboard umožňuje:
+
+1. vybrat finanční aktivum pomocí ticker symbolu
+2. zvolit časový rozsah dat
+3. zobrazit vývoj ceny v grafu
+4. sledovat základní výkonnost aktiva
+
+## Aktuální stav
+### Hotovo
+- React + TypeScript aplikace
+- komunikace s backend API
+- načítání historických dat
+- interaktivní graf
+- přepínání tickerů
+- přepínání časových období
+- responzivní rozložení
+
+### Plánované
+- porovnání více aktiv
+- portfolio dashboard
+- pokročilé metriky
+- export dat
+- vylepšení UI
+
+## Dokumentace
+
+Další dokumentace:
+
+- architecture.md
+- roadmap.md
+
+## Licence
+
+Projekt slouží jako výukový a portfolio projekt.
+

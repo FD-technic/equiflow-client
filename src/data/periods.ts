@@ -59,7 +59,7 @@ export const PERIODS: Period[] = [
     {
         label: "All time",
         value: "ALL",
-        days: 100,
+        days: 1000,
         period: DATAPERIODS[2].value,
     },
 ];
