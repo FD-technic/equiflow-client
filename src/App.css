@@ -120,6 +120,26 @@ select {
     font-size: 1rem;
 }
 
+.navLink {
+    min-width: 6em;
+    color: #426e19;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.portfolio-table {
+    
+    font-size: 1em;
+}
+
+.portfolio-table th {
+    font-size: .8em;
+}
+
+.portfolio-table td {
+    font-size: 1em;
+}
+
 /* ===== LAYOUT ===== */
 
 
