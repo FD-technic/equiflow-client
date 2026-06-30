@@ -46,7 +46,7 @@
 .header nav ul li a {
     padding: .25em 1em;
     border-radius: .5em;
-    background-color: var(--color-primary);
+    background-color: var(--linear-stop);
     color: var(--text-dark);
     text-decoration: none;
     text-transform: uppercase;
@@ -86,17 +86,26 @@
   box-shadow: 6px 4px 5px #10101023;
 }
 
+.section .simple {
+  padding: 0.25em;
+  margin: 0.125em;
+  margin-top: 1em;
+  border-radius: none;
+  border: none;
+  box-shadow: none;
+}
+
 .btn {
-    padding: .25em 1em;
+    padding: .5em 1em;
     font-size: 18px;
-    background-color: rgb(110, 141, 117);
+    background-color: rgb(56, 172, 83);
     border: none;
     border-radius: 3px 8px;
 }
 
 .btn:hover {
-    background-color: rgba(75, 120, 80, 0.3);
-    color: rgba(67, 111, 60, 0.8);
+    background-color: rgb(61, 155, 83);
+    color: rgba(209, 231, 206, 0.8);
 }
 
 .big-text {
@@ -120,13 +129,6 @@ select {
     font-size: 1rem;
 }
 
-.navLink {
-    min-width: 6em;
-    color: #426e19;
-    text-decoration: none;
-    font-weight: 500;
-}
-
 .portfolio-table {
     
     font-size: 1em;
@@ -142,7 +144,7 @@ select {
 
 /* ===== LAYOUT ===== */
 
-
+.layout-sm,
 .layout {
   min-height: 0;
   display: grid;
@@ -151,6 +153,11 @@ select {
   grid-template-columns: 230px 1fr;
   align-items: start;
   min-height: auto;
+  background-color: var(--bg-color);
+}
+
+.layout-sm {
+  grid-template-columns:1fr;
   background-color: var(--bg-color);
 }
 

@@ -6,6 +6,6 @@ export interface PortfolioDetailDTO {
     type: string;
     ownerId: number;
     ownerName: string;
-    positions: PositionDetailDTO[];
+    positionDetailDTO: PositionDetailDTO[];
 }
 

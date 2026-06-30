@@ -4,18 +4,15 @@ import { useEffect, useState } from "react";
 import ChartCard from "./ChartCard";
 import { getApi } from "../api/getApi";
 import type { StockData } from "../types/stock";
-import type { ChartQuery } from "../types/chart";
 import { TICKERS, type Ticker } from "../data/tickers";
 import { PERIODS, type Period} from "../data/periods";
 import Trend from "./Trend";
 import ChartForm from "./ChartForm";
+import { loadChartQuery, saveChartQuery } from "../utils/chartQuery";
 
 const StockDashboard = () => {
   const [data, setData] = useState<StockData>();
-  const [query, setQuery] = useState<ChartQuery>({
-    ticker: TICKERS[0],
-    period: PERIODS[0],
-  });
+  const [query, setQuery] = useState(loadChartQuery);
 
   const [timeStamp, setTimeStamp] = useState<string>();
   const date = timeStamp ? new Date(timeStamp) : null;
@@ -49,8 +46,7 @@ const StockDashboard = () => {
   }, [tickers]);
 
   useEffect(() => {
-    localStorage.setItem("lastTicker", query.ticker.value);
-    localStorage.setItem("lastPeriod", query.period.value);
+    saveChartQuery(query);
   }, [query]);
 
   useEffect(() => {
@@ -64,7 +60,7 @@ const StockDashboard = () => {
         setData(undefined);
         setError(undefined);
 
-        const request = `/api/stocks/av?ticker=${query.ticker.value}&period=${query.period.period}`;
+        const request = `/api/stocks?provider=ALPHAVANTAGE&ticker=${query.ticker.value}&period=${query.period.period}`;
         const fetchedData = await getApi(request);
 
         setData(fetchedData);

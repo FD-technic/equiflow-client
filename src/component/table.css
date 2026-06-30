@@ -1,0 +1,14 @@
+table {
+    border-collapse: collapse;
+}
+
+.selectable tbody tr {
+    color: rgb(32, 102, 18);
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.selectable tbody tr:hover {
+    background-color: rgb(155, 207, 171);
+    color: black;
+}

@@ -1,4 +1,3 @@
-import type { PositionDTO } from "./PositionDTO";
 
 export interface PortfolioDTO {
     id: number;
@@ -6,6 +5,6 @@ export interface PortfolioDTO {
     type: string;
     ownerId: number;
     ownerName: string;
-    positions: PositionDTO[];
+    positionCount: number;
 }
 

@@ -1,4 +1,4 @@
-
+import "./table.css";
 import type { PortfolioDTO } from "../dto/PortfolioDTO";
 
 type PortfolioTableProps = {
@@ -10,8 +10,8 @@ const PortfolioTable = ({ portfolios, onSelect }: PortfolioTableProps) => {
   
   
     return (
-    <div className="section">
-      <table border={1}>
+    <div className="section simple">
+      <table border={1} className="selectable">
         <thead>
           <tr>
             <th>Owner</th>
@@ -22,11 +22,14 @@ const PortfolioTable = ({ portfolios, onSelect }: PortfolioTableProps) => {
         </thead>
         <tbody>
           {portfolios.map((portfolio) => (
-            <tr key={portfolio.id} onClick={() => onSelect(portfolio.id)}>              
+            <tr
+              key={portfolio.id}
+              onClick={() => onSelect(portfolio.id)}
+              >              
                 <td>{portfolio.name}</td>
                 <td>{portfolio.type}</td>
                 <td>{portfolio.ownerName}</td>
-                <td>{portfolio.positions.length}</td>
+                <td>{portfolio.positionCount}</td>
             </tr>
           ))}
         </tbody>

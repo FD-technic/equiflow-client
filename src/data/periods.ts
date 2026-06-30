@@ -46,7 +46,7 @@ export const PERIODS: Period[] = [
     },
     {
         label: "Year",
-        value: "Year",
+        value: "YEAR",
         days: 52,
         period: DATAPERIODS[1].value,
     },

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import ContactModal from "./ContactModal";
 import logo from "../assets/EF_logo.png";
 import { NavLink } from "react-router-dom";
+import BaseModal from "./modal/BaseModal";
+import ContactContent from "./modal/ContactContent";
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,31 +14,55 @@ const Header = () => {
         <h1>Equi<span>Flow</span></h1>
         <nav className="nav">
           <ul>
-            <NavLink
+            <li>
+              <NavLink
               to="/stock-dashboard"
-              className={({ isActive }) =>
+              className='
+                btn 
+                {({ isActive }) =>
                 isActive ? "active" : ""
-              }
+                }
+              '
             >
               Stock
             </NavLink>
-            <NavLink
+            </li>
+            <li>
+              <NavLink
               to="/portfolio-dashboard"
-              className={({ isActive }) =>
+              className='
+                btn
+                {({ isActive }) =>
                 isActive ? "active" : ""
-              }
+                }
+              '
             >
               Portfolio
             </NavLink>
+            </li>
+            
             <li><button onClick={() => setIsModalOpen(true)} className="btn">Contact</button></li>
           </ul>
         </nav>
       </div>
-      <ContactModal
-       isOpen={isModalOpen}
-       onClose={() => setIsModalOpen(false)}
+      
+      <BaseModal
+        title="Contact Body"
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        >
+          <ContactContent
+            mailIcon="#"
+            linkedinIcon="#"
+            githubIcon="#"
+            mail="petr@fdweb.cz"
+            linkedin="https://www.linkedin.com/in/petr-hron-dev/"
+            github="https://github.com/FD-technic"
+          />
 
-      />      
+        </BaseModal>
+        
+
     </>
   );
 };
