@@ -1,131 +1,164 @@
-# Roadmapa projektu EquiFlow Client
+# EquiFlow Client Roadmap
 
-Tento dokument popisuje plán dalšího vývoje frontendové části projektu EquiFlow.
+This document outlines the planned development of the EquiFlow frontend.
 
----
+The roadmap evolves together with the project as new features and improvements are implemented.
 
-## Aktuální stav projektu
 
-### Hotovo
+## Quick Links
 
-* React + TypeScript aplikace
-* komunikace s backend API
-* zobrazení historických dat
-* interaktivní graf vývoje ceny
-* výběr ticker symbolu
-* přepínání časového období
-* zobrazení základního výnosu
-* nasazení na veřejnou doménu
+🌐 Live Demo - https://equiflow.ferdo.eu
+
+🔗 REST API: https://api.equiflow.ferdo.eu
+
+📦 Backend Repository - https://github.com/FD-technic/equiflow-backend
+
+💻 Frontend Repository - https://github.com/FD-technic/equiflow-client
 
 ---
 
-## Krátkodobé cíle
 
-### Podpora více aktiv
+# Current Status
 
-Zobrazení více tickerů současně.
+## Completed
 
-Příklady:
+- React + TypeScript application
+- REST API integration
+- Historical market data visualization
+- Interactive charts
+- Ticker selection
+- Multiple time periods
+- Responsive layout
+- Deployment on a self-managed Linux VPS
 
-* SPY vs QQQ
-* AAPL vs MSFT
-* ETF vs ETF
-
-Přínosy:
-
-* rychlé porovnání výkonnosti
-* lepší využití nového backend API
-* příprava pro portfolio funkce
+The frontend provides a solid foundation for portfolio management and financial analytics.
 
 ---
 
-### Rozšíření přehledu aktiv
+# Short-Term Goals
 
-Doplnění dalších informací:
+## Multiple Asset Comparison
 
-* aktuální výnos
-* počet dostupných datových bodů
-* datum poslední aktualizace
-* základní statistiky
+Display multiple assets simultaneously.
 
----
+Examples
 
-## Střednědobé cíle
+- SPY vs QQQ
+- AAPL vs MSFT
+- ETF vs ETF
 
-### Portfolio Dashboard
+Benefits
 
-Možnost sestavit vlastní portfolio.
-
-Funkce:
-
-* přidání více aktiv
-* nastavení vah
-* výpočet celkového výnosu
-* přehled složení portfolia
+- easier performance comparison
+- improved user experience
+- support for future portfolio features
 
 ---
 
-### Analytické metriky
+## Enhanced Asset Overview
 
-Zobrazení metrik poskytovaných backendem:
+Display additional information for each asset.
 
-* Return
-* Drawdown
-* Volatility
-* Sharpe Ratio
+Planned features
 
----
-
-### Vylepšení uživatelského rozhraní
-
-Plánované úpravy:
-
-* lepší práce s mobilními zařízeními
-* rychlejší načítání dat
-* přehlednější rozložení dashboardu
-* vylepšení grafů
+- current performance
+- available historical data points
+- last update timestamp
+- basic statistics
 
 ---
 
-## Dlouhodobé cíle
+# Mid-Term Goals
 
-### Pokročilé porovnávání aktiv
+## Portfolio Dashboard
 
-Možnosti:
+Allow users to build and manage investment portfolios.
 
-* překrytí více grafů
-* porovnání výkonnosti v procentech
-* benchmark s indexem
+Planned features
 
----
-
-### Export dat
-
-Podporované formáty:
-
-* CSV
-* JSON
-* PDF report
+- multiple portfolio support
+- asset allocation
+- portfolio performance
+- portfolio history
+- profit and loss overview
 
 ---
 
-### Personalizace dashboardu
+## Financial Analytics
 
-Možnosti:
+Display metrics calculated by the backend.
 
-* vlastní rozložení panelů
-* oblíbené tickery
-* ukládání nastavení uživatele
+Planned metrics
+
+- Return
+- Maximum Drawdown
+- Volatility
+- Sharpe Ratio
 
 ---
 
-## Stav projektu
+## User Interface Improvements
 
-EquiFlow Client je výukový a portfolio projekt zaměřený na získávání zkušeností s:
+Planned improvements
 
-* React
-* TypeScript
-* REST API
-* vizualizací dat
-* návrhem uživatelského rozhraní
-* finančními daty
+- better mobile experience
+- faster data loading
+- dashboard layout improvements
+- enhanced charts
+- loading and error states
+
+---
+
+# Long-Term Goals
+
+## Advanced Asset Comparison
+
+Future functionality
+
+- multiple chart overlays
+- percentage performance comparison
+- benchmark comparison
+
+---
+
+## Data Export
+
+Supported formats
+
+- CSV
+- JSON
+- PDF reports
+
+---
+
+## Dashboard Personalization
+
+Future features
+
+- customizable dashboard layout
+- favorite assets
+- saved user preferences
+- theme customization
+
+---
+
+# Long-Term Vision
+
+EquiFlow Client aims to become a modern investment dashboard focused on usability, performance and financial data visualization.
+
+The project also serves as a portfolio application demonstrating:
+
+- React
+- TypeScript
+- REST API integration
+- Responsive UI development
+- Financial data visualization
+- Modern frontend architecture
+
+---
+
+Developed by **Petr Hron**
+
+🌐 https://fdweb.cz
+
+💼 https://linkedin.com/in/petr-hron-dev

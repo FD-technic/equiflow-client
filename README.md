@@ -1,149 +1,184 @@
 # EquiFlow Client
 
-Frontendová část projektu EquiFlow.
+EquiFlow Client is the frontend application of the EquiFlow investment dashboard.
 
-EquiFlow je experimentální projekt zaměřený na práci s historickými daty finančních aktiv (akcie, ETF).
+Built with React, TypeScript and Vite, it provides a modern user interface for visualizing historical market data, portfolio performance and financial analytics.
 
-Projekt se skládá z:
+The client communicates with the Spring Boot backend through REST APIs and is available online at **https://equiflow.ferdo.eu**.
 
-* backendového REST API postaveného na Spring Boot
-* frontendového dashboardu postaveného na Reactu
-* PostgreSQL databáze pro ukládání historických dat
+## Quick Links
 
-Cílem projektu je postupně vybudovat jednoduchý analytický engine pro práci s finančními časovými řadami a investičními daty.
+🌐 Live Demo - https://equiflow.ferdo.eu
 
-## Související repozitáře
+🔗 REST API: https://api.equiflow.ferdo.eu
 
-Frontend:
-https://github.com/FD-technic/equiflow-client
+📦 Backend Repository - https://github.com/FD-technic/equiflow-backend
 
-Backend:
-https://github.com/FD-technic/equiflow-backend
-
-## Live Demo
-
-#### Frontend: https://equiflow.ferdo.eu
-#### API: https://api.equiflow.ferdo.eu
+💻 Frontend Repository - https://github.com/FD-technic/equiflow-client
 
 ---
 
-## Popis
-Frontend poskytuje webové rozhraní pro vizualizaci historických dat finančních aktiv.
 
-Data jsou načítána z backendového API a zobrazována pomocí interaktivních grafů a přehledových statistik.
-
-## Ukázka aplikace
+# Screenshot
 
 ![EquiFlow Dashboard](docs/images/dashboard.png)
 
+---
 
-## Funkce
-- zobrazení historických dat finančních aktiv
-- výběr ticker symbolu
-- přepínání časového období
-- interaktivní graf vývoje ceny
-- zobrazení základního výnosu
-- komunikace s backend REST API
+# Features
 
-## Technologie
+- Interactive stock and ETF charts
+- Historical market data visualization
+- Multiple time periods
+- Responsive dashboard
+- REST API integration
+- Portfolio-ready architecture
+
+---
+
+# Tech Stack
+
 - React
 - TypeScript
 - Vite
+- REST API
 - CSS
+- Docker
+- Nginx
+- Linux VPS
+- Git
+- GitHub
 
-## Architektura
-```
+---
+
+# Architecture
+
+```text
 Browser
     │
     ▼
 React Client
     │
-    ▼
 REST API
     │
     ▼
 Spring Boot Backend
     │
-    ▼
-PostgreSQL
+ ┌──┴──────────────┐
+ ▼                 ▼
+Cache         PostgreSQL
 ```
 
-## Spuštění projektu
-### Požadavky
+---
+
+# Getting Started
+
+## Requirements
+
 - Node.js 20+
 - npm
 
-### Instalace
+---
 
-V kořenové složce projektu:
+## Installation
 
 ```bash
 npm install
 ```
 
-### Spuštění
+---
+
+## Run Development Server
 
 ```bash
 npm run dev
 ```
 
-Po spuštění bude aplikace dostupná na:
+Application will be available at
 
+```text
 http://localhost:5173
+```
 
+---
 
-### Build produkční verze
+## Production Build
 
 ```bash
 npm run build
 ```
 
-Výstup bude vytvořen ve složce:
+The production build is generated in
 
-dist
+```text
+dist/
+```
 
-### Konfigurace
+---
 
-Adresa backend API se nastavuje pomocí konfiguračních proměnných.
+## Configuration
 
-Například:
+Backend API URL is configured using environment variables.
 
+Example:
+
+```env
 VITE_API_URL=http://localhost:8080
+```
 
-### Uživatelské rozhraní
+---
 
-Dashboard umožňuje:
+# User Interface
 
-1. vybrat finanční aktivum pomocí ticker symbolu
-2. zvolit časový rozsah dat
-3. zobrazit vývoj ceny v grafu
-4. sledovat základní výkonnost aktiva
+The dashboard allows users to
 
-## Aktuální stav
-### Hotovo
-- React + TypeScript aplikace
-- komunikace s backend API
-- načítání historických dat
-- interaktivní graf
-- přepínání tickerů
-- přepínání časových období
-- responzivní rozložení
+- search financial assets by ticker
+- switch between different time periods
+- display interactive price charts
+- view historical market data
+- communicate with the backend REST API
 
-### Plánované
-- porovnání více aktiv
-- portfolio dashboard
-- pokročilé metriky
-- export dat
-- vylepšení UI
+---
 
-## Dokumentace
+# Project Status
 
-Další dokumentace:
+## Implemented
+
+- React + TypeScript application
+- REST API communication
+- Historical market data visualization
+- Interactive charts
+- Multiple ticker support
+- Multiple time periods
+- Responsive layout
+
+## Planned
+
+- Portfolio dashboard
+- Multiple chart comparison
+- Advanced financial metrics
+- Export functionality
+- UI improvements
+
+---
+
+# Documentation
+
+Additional documentation
 
 - architecture.md
 - roadmap.md
 
-## Licence
+---
 
-Projekt slouží jako výukový a portfolio projekt.
+# License
 
+This project is developed as a learning and portfolio project.
+
+---
+
+Developed by **Petr Hron**
+
+🌐 https://fdweb.cz
+
+💼 https://linkedin.com/in/petr-hron-dev

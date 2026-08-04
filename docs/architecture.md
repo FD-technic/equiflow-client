@@ -1,102 +1,72 @@
-# Architektura projektu EquiFlow Client
+# EquiFlow Client Architecture
 
-## Přehled projektu
+## Project Overview
 
-EquiFlow Client je webová aplikace pro vizualizaci historických dat finančních aktiv.
+EquiFlow Client is a React application that provides a modern interface for visualizing historical financial market data.
 
-Frontend komunikuje s backendovým REST API a zobrazuje data pomocí interaktivních grafů a přehledových statistik.
+The frontend communicates with the Spring Boot backend through REST APIs and displays interactive charts and financial statistics.
 
+## Quick Links
+
+🌐 Live Demo - https://equiflow.ferdo.eu
+
+🔗 REST API: https://api.equiflow.ferdo.eu
+
+📦 Backend Repository - https://github.com/FD-technic/equiflow-backend
+
+💻 Frontend Repository - https://github.com/FD-technic/equiflow-client
 
 ---
 
-## Celková architektura
+
+# System Architecture
 
 ```text
-User
-  │
-  ▼
-React Components
-  │
-  ▼
-API Layer
-  │
-  ▼
-Spring Boot Backend
+          User
+            │
+            ▼
+     React Components
+            │
+            ▼
+       Service Layer
+            │
+            ▼
+        REST API
+            │
+            ▼
+ Spring Boot Backend
+            │
+     PostgreSQL + Cache
 ```
 
----
-
-## Struktura repozitáře
-
-Frontend:
-https://github.com/FD-technic/equiflow-client
-
-Backend:
-https://github.com/FD-technic/equiflow-backend
-
----
-
-## Struktura projektu
+# Project Structure
 
 ```text
 src
 │
-├─ api
-│   └─ komunikace s backendem
-│
-├─ components
-│   └─ znovupoužitelné React komponenty
-│
-├─ data
-│   └─ konstanty a výchozí hodnoty
-│
-├─ types
-│   └─ TypeScript typy
-│
-├─ App.tsx
-└─ main.tsx
+├── api
+├── components
+├── data
+├── types
+├── App.tsx
+└── main.tsx
 ```
 
 ---
 
-## Hlavní komponenty
+# Application Layers
 
-### App
-
-Hlavní komponenta aplikace.
-
-Odpovídá za:
-
-* načtení dat
-* správu stavu aplikace
-* předávání dat podřízeným komponentám
+| Layer | Responsibility |
+|--------|----------------|
+| components | Reusable React UI components |
+| api | Communication with the backend REST API |
+| data | Default values and application constants |
+| types | TypeScript interfaces and models |
+| App | Application entry point and state management |
 
 ---
 
-### ChartCard
-
-Komponenta zobrazující graf historických dat.
-
-Odpovídá za:
-
-* vykreslení grafu
-* aktualizaci při změně tickeru
-* aktualizaci při změně časového období
-
----
-
-### Trend
-
-Komponenta zobrazující výkonnost aktiva.
-
-Odpovídá za:
-
-* výpočet procentní změny
-* zobrazení trendu
-
----
-
-## Datový tok
+# Data Flow
 
 ```text
 User Action
@@ -105,16 +75,19 @@ User Action
 React Component
       │
       ▼
-API Request
+API Service
       │
       ▼
-Backend REST API
+REST Request
+      │
+      ▼
+Spring Boot Backend
       │
       ▼
 JSON Response
       │
       ▼
-Application State
+React State
       │
       ▼
 UI Update
@@ -122,30 +95,41 @@ UI Update
 
 ---
 
-## Použité technologie
+# Technologies
 
-* React
-* TypeScript
-* Vite
-* Fetch API
-* CSS
-
----
-
-## Návrhové principy
-
-* komponentová architektura
-* oddělení API komunikace od UI
-* TypeScript typy pro datové modely
-* znovupoužitelné komponenty
-* jednoduchá správa stavu pomocí React Hooks
+- React
+- TypeScript
+- Vite
+- Fetch API
+- CSS
+- REST API
 
 ---
 
-## Budoucí rozšíření
+# Design Principles
 
-* podpora více tickerů
-* portfolio dashboard
-* porovnání více aktiv
-* pokročilé metriky
-* export dat
+- Component-based architecture
+- Separation of UI and API communication
+- Type-safe data models with TypeScript
+- Reusable components
+- React Hooks for state management
+- Responsive user interface
+
+---
+
+# Future Improvements
+
+- Portfolio dashboard
+- Multiple asset comparison
+- Advanced financial metrics
+- Interactive filtering
+- Data export
+- Dark/Light theme improvements
+
+---
+
+Developed by **Petr Hron**
+
+🌐 https://fdweb.cz
+
+💼 https://linkedin.com/in/petr-hron-dev

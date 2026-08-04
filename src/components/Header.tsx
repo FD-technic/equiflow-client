@@ -16,26 +16,31 @@ const Header = () => {
           <ul>
             <li>
               <NavLink
-              to="/stock-dashboard"
-              className='
-                btn 
-                {({ isActive }) =>
-                isActive ? "active" : ""
-                }
-              '
+              to="/"
+              end
+              className={({ isActive }) =>
+                `btn ${isActive ? "active" : ""}`
+              }
+            >
+              Home
+            </NavLink>
+            </li>
+            <li>
+              <NavLink
+              to="/stock"
+              className={({ isActive }) =>
+                `btn ${isActive ? "active" : ""}`
+              }
             >
               Stock
             </NavLink>
             </li>
             <li>
               <NavLink
-              to="/portfolio-dashboard"
-              className='
-                btn
-                {({ isActive }) =>
-                isActive ? "active" : ""
-                }
-              '
+              to="/portfolio"
+              className={({ isActive }) =>
+                `btn ${isActive ? "active" : ""}`
+              }
             >
               Portfolio
             </NavLink>
@@ -52,9 +57,6 @@ const Header = () => {
         onClose={() => setIsModalOpen(false)}
         >
           <ContactContent
-            mailIcon="#"
-            linkedinIcon="#"
-            githubIcon="#"
             mail="petr@fdweb.cz"
             linkedin="https://www.linkedin.com/in/petr-hron-dev/"
             github="https://github.com/FD-technic"

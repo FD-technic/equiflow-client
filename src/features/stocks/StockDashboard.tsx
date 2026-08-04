@@ -1,23 +1,24 @@
-import "../App.css";
+import "../../App.css";
 
 import { useEffect, useState } from "react";
-import ChartCard from "./ChartCard";
-import { getApi } from "../api/getApi";
-import type { StockData } from "../types/stock";
-import { TICKERS, type Ticker } from "../data/tickers";
-import { PERIODS, type Period} from "../data/periods";
-import Trend from "./Trend";
-import ChartForm from "./ChartForm";
-import { loadChartQuery, saveChartQuery } from "../utils/chartQuery";
+import ChartCard from "../../components/charts/ChartCard";
+import { TICKERS, type Ticker } from "./tickers";
+import { PERIODS, type Period} from "./periods";
+import Trend from "../../components/Trend";
+import ChartForm from "../../components/charts/ChartForm";
+import { loadChartQuery, saveChartQuery } from "../../utils/chartQuery";
+import { useStock } from "./stockApi";
 
 const StockDashboard = () => {
-  const [data, setData] = useState<StockData>();
   const [query, setQuery] = useState(loadChartQuery);
 
-  const [timeStamp, setTimeStamp] = useState<string>();
-  const date = timeStamp ? new Date(timeStamp) : null;
+  const { data, loading, error } =
+    useStock(query.ticker.value, query.period.period);
 
-  const [loading, setLoading] = useState(true);
+  
+  const date = data?.updateAt
+    ? new Date(data.updateAt)
+    : null;
 
   const [tickers] = useState<Ticker[]>(() => {
     const saved = localStorage.getItem("tickers");
@@ -39,8 +40,6 @@ const StockDashboard = () => {
     return PERIODS;
   });
 
-  const [error, setError] = useState<string>();
-
   useEffect(() => {
     localStorage.setItem("tickers", JSON.stringify(tickers));
   }, [tickers]);
@@ -53,31 +52,7 @@ const StockDashboard = () => {
     localStorage.setItem("periods", JSON.stringify(periods));
   }, [periods]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        setData(undefined);
-        setError(undefined);
-
-        const request = `/api/stocks?provider=ALPHAVANTAGE&ticker=${query.ticker.value}&period=${query.period.period}`;
-        const fetchedData = await getApi(request);
-
-        setData(fetchedData);
-        setTimeStamp(fetchedData.updateAt);
-      } catch (error) {
-        console.error(error);
-
-        setError(
-          "Date are currently unavailable. The provider may have reached its request limit."
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [query]);
+  
 
   const chartData = data?.points
   ? [...data.points].slice(0,query.period.days).reverse()

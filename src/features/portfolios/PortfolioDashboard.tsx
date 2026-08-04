@@ -1,11 +1,11 @@
-import "../App.css";
+import "../../App.css";
 import { useState } from "react";
-import { useApi } from "../api/useApi";
-import type { PortfolioDTO } from "../dto/PortfolioDTO";
+import { useApi } from "../../api/useApi";
+import type { PortfolioDTO } from "./dto/PortfolioDTO";
 import PortfolioTable from "./PortfolioTable";
 import PortfolioDetail from "./PortfolioDetail";
-import BaseModal from "./modal/BaseModal";
-import ConstructionContent from "./modal/ConstructionContent";
+import BaseModal from "../../components/modal/BaseModal";
+import ConstructionContent from "../../components/modal/ConstructionContent";
 
 const PortfolioDashboard = () => {
   const {

@@ -1,7 +1,7 @@
-import { TICKERS } from "../data/tickers";
-import { PERIODS } from "../data/periods";
-import Select from "./Select";
-import type { ChartQuery } from "../types/chart";
+import { TICKERS } from "../../features/stocks/tickers";
+import { PERIODS } from "../../features/stocks/periods";
+import Select from "../Select";
+import type { ChartQuery } from "./chart.types";
 
 type Props = {
   id: string

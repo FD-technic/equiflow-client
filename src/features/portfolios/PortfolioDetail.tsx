@@ -1,8 +1,8 @@
-import type { PortfolioDetailDTO } from "../dto/PortfolioDetailDTO";
-import { useApi } from "../api/useApi";
+import type { PortfolioDetailDTO } from "./dto/PortfolioDetailDTO";
+import { useApi } from "../../api/useApi";
 import { useState } from "react";
-import BaseModal from "./modal/BaseModal";
-import ConstructionContent from "./modal/ConstructionContent";
+import BaseModal from "../../components/modal/BaseModal";
+import TickerDetailContent from "../../components/modal/TickerDetailContent";
 
 type PortfolioDetailProps = {
   portfolioId: number;
@@ -11,7 +11,7 @@ type PortfolioDetailProps = {
 
 const PortfolioDetail = ({ portfolioId, onClose }: PortfolioDetailProps) => {
   const [isDetailOpen, setIsDetailOpen] = useState(false);
-  const [slectedPosition, setSlectedPosition] = useState<PortfolioDetailDTO | null>(null);
+  const [slectedTicker, setSlectedTicker] = useState("");
 
   const {
     data: portfolio,
@@ -65,7 +65,11 @@ const PortfolioDetail = ({ portfolioId, onClose }: PortfolioDetailProps) => {
                   {portfolio.positionDetailDTO.map((position) => (
                     <tr
                       key={position.ticker}
-                      onClick={() => setIsDetailOpen(true)}
+                      onClick={() => {
+                        setIsDetailOpen(true);
+                        setSlectedTicker(position.ticker);
+                        console.log("SELECTED TICKER: ", slectedTicker)
+                      }}
                     >
                       <td>{position.ticker}</td>
                       <td>{position.quantity}</td>
@@ -91,7 +95,8 @@ const PortfolioDetail = ({ portfolioId, onClose }: PortfolioDetailProps) => {
         isOpen={isDetailOpen}
         onClose={() => setIsDetailOpen(false)}
       >
-        <ConstructionContent />
+        <TickerDetailContent
+          ticker={slectedTicker ?? ""} />
       </BaseModal>
     </div>
   );

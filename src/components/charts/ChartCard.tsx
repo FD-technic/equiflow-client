@@ -1,5 +1,5 @@
-import "../App";
-import type { StockPoint } from "../types/stock";
+import "../../App";
+import type { StockPoint } from "../../features/stocks/stock.types";
 import ChartArea from "./ChartArea";
 import "./Chart.css";
 

@@ -11,4 +11,5 @@ export type StockData = {
 currency: string;
 points: StockPoint[];
 ticker: string;
+updateAt: Date;
 };

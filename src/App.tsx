@@ -1,9 +1,11 @@
 
 import { Route, Routes } from "react-router-dom";
-import Footer from "./component/Footer";
-import Header from "./component/Header";
-import PortfolioDashboard from "./component/PortfolioDashboard";
-import StockDashboard from "./component/StockDashboard";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import PortfolioDashboard from "./features/portfolios/PortfolioDashboard";
+import StockDashboard from "./features/stocks/StockDashboard";
+import HomePage from "./components/pages/HomePage";
+import NotFound from "./components/pages/NotFound";
 
 function App() {
   
@@ -12,8 +14,10 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/stock-dashboard" element={<StockDashboard />} />
-        <Route path="/portfolio-dashboard" element={<PortfolioDashboard />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/stock" element={<StockDashboard />} />
+        <Route path="/portfolio" element={<PortfolioDashboard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       
       <Footer />

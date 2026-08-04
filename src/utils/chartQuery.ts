@@ -1,6 +1,6 @@
-import { TICKERS } from "../data/tickers";
-import { PERIODS } from "../data/periods";
-import type { ChartQuery } from "../types/chart";
+import { TICKERS } from "../features/stocks/tickers";
+import { PERIODS } from "../features/stocks/periods";
+import type { ChartQuery } from "../components/charts/chart.types";
 
 export function loadChartQuery(): ChartQuery {
   const lastTicker = localStorage.getItem("lastTicker");

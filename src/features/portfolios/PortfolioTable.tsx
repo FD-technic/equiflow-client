@@ -1,5 +1,6 @@
-import "./table.css";
-import type { PortfolioDTO } from "../dto/PortfolioDTO";
+import "../../App.css";
+import "../../index.css";
+import type { PortfolioDTO } from "./dto/PortfolioDTO";
 
 type PortfolioTableProps = {
   portfolios: PortfolioDTO[];
@@ -15,8 +16,8 @@ const PortfolioTable = ({ portfolios, onSelect }: PortfolioTableProps) => {
         <thead>
           <tr>
             <th>Owner</th>
+            <th>Name</th>
             <th>Typ</th>
-            <th>User</th>
             <th>Positions</th>
           </tr>
         </thead>
@@ -26,9 +27,9 @@ const PortfolioTable = ({ portfolios, onSelect }: PortfolioTableProps) => {
               key={portfolio.id}
               onClick={() => onSelect(portfolio.id)}
               >              
+                <td>{portfolio.ownerName}</td>
                 <td>{portfolio.name}</td>
                 <td>{portfolio.type}</td>
-                <td>{portfolio.ownerName}</td>
                 <td>{portfolio.positionCount}</td>
             </tr>
           ))}

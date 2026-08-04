@@ -1,7 +1,7 @@
-import { TICKERS } from "../data/tickers";
-import Select from "./Select";
-import type { ChartQuery } from "../types/chart";
-import Input from "./Input";
+import { TICKERS } from "../../features/stocks/tickers";
+import Select from "../../components/Select";
+import type { ChartQuery } from "../../components/charts/chart.types";
+import Input from "../../components/Input";
 
 type Props = {
   id: string

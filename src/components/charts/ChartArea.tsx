@@ -1,4 +1,4 @@
-import type { StockPoint } from "../types/stock";
+import type { StockPoint } from "../../features/stocks/stock.types";
 import "./Chart.css";
 
 import {
